@@ -13,9 +13,10 @@ const FindMeet = () => {
             <h1 className="text-5xl font-semibold m-7">
                 What's your code?
             </h1>
+            <br></br>
             <div className="flex flex-row items-center justify-center space-x-2">
                 <input 
-                    className="text-center rounded px-2 text-lg outline-none"
+                    className="text-center rounded px-2 text-xl outline-none"
                     placeholder="Enter it here"
                 />
                 {/* Arrow button using ASCII character for simplicity */}
