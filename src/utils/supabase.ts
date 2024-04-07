@@ -10,6 +10,7 @@ export async function googleSignIn() {
         provider: "google",
         options: {
             scopes: "https://www.googleapis.com/auth/calendar.events.freebusy",
+            redirectTo: window.location.href,
         },
     });
     if (error) {

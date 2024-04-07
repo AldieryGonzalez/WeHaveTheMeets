@@ -15,7 +15,7 @@ type ConnectCalProps = {
 
 const ConnectCal = ({ open, setOpen }: ConnectCalProps) => {
     return (
-        <AlertDialog defaultOpen open={open}>
+        <AlertDialog open={open}>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>

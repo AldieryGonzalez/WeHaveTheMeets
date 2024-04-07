@@ -8,6 +8,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import App from "./App.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
 import "./index.css";
 import ConnectCal from "./pages/ConnectCal.tsx";
 import CreateMeet from "./pages/CreateMeet.tsx";
@@ -31,7 +32,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <SessionContextProvider supabaseClient={supabase}>
-            <RouterProvider router={router} />
+            <AuthProvider>
+                <RouterProvider router={router} />
+            </AuthProvider>
         </SessionContextProvider>
     </React.StrictMode>,
 );

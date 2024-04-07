@@ -1,6 +1,9 @@
 import Availability from "@/components/Availability";
 import ConnectCal from "@/components/ConnectCal";
 import { supabase } from "@/utils/supabase";
+import { useAuth } from "@/utils/useAuth";
+import { type Session } from "@supabase/supabase-js";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -12,11 +15,14 @@ type Day = {
 };
 
 const Meet = () => {
-    const [open, setOpen] = useState(true);
+    const { session } = useAuth();
+    const provider = session?.user.app_metadata.provider || "";
+    const [open, setOpen] = useState(provider != "");
     const [name, setName] = useState("");
     const [days, setDays] = useState<Day[]>([]);
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    console.log(provider);
 
     useEffect(() => {
         if (!id) {
@@ -25,6 +31,18 @@ const Meet = () => {
         }
         // const unpackedID = atob(id);
         // console.log(unpackedID);
+        const fetchCalendar = async (
+            session: Session | null,
+            startTime = new Date().toISOString(),
+        ) => {
+            const url = `https://www.googleapis.com/calendar/v3/freeBusy?timeMin=${startTime}`;
+            const response = await axios.get(url, {
+                headers: {
+                    Authorization: `Bearer ${session?.provider_token}`,
+                },
+            });
+            console.log(response.data);
+        };
         const getMeet = async () => {
             const res = await supabase
                 .from("days")
@@ -35,7 +53,7 @@ const Meet = () => {
         };
 
         getMeet();
-    }, [id, navigate]);
+    }, [id, navigate, session]);
 
     return (
         <div className='m-8 flex flex-col gap-4'>

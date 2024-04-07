@@ -64,21 +64,35 @@ const Availability = ({ days }: AvailabilityProps) => {
                         className='flex flex-col border'
                         style={{ width: `calc(100% / ${days.length})` }}
                     >
-                        {Array.from({ length: 24 }).map((_, row) => (
-                            <div
-                                key={row}
-                                id={`${col}-${row}`}
-                                className='w-full grow border-t'
-                                style={{
-                                    height: `calc((100% / 24))`,
-                                    backgroundColor: selected[col][row]
-                                        ? "blue"
-                                        : "white",
-                                }}
-                                onMouseDown={handleDragStart}
-                                onMouseUp={handleDragEnd}
-                            ></div>
-                        ))}
+                        {Array.from({ length: 24 }).map((_, row) => {
+                            if (selected[col][row]) {
+                                return (
+                                    <div
+                                        key={row}
+                                        id={`${col}-${row}`}
+                                        className='w-full grow border-t'
+                                        style={{
+                                            height: `calc((100% / 24))`,
+                                        }}
+                                        onMouseDown={handleDragStart}
+                                        onMouseUp={handleDragEnd}
+                                    />
+                                );
+                            } else {
+                                return (
+                                    <div
+                                        key={row}
+                                        id={`${col}-${row}`}
+                                        className='w-full grow border-t bg-green-500'
+                                        style={{
+                                            height: `calc((100% / 24))`,
+                                        }}
+                                        onMouseDown={handleDragStart}
+                                        onMouseUp={handleDragEnd}
+                                    />
+                                );
+                            }
+                        })}
                     </div>
                 ))}
             </div>

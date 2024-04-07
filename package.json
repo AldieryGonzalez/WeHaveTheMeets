@@ -20,6 +20,7 @@
         "@supabase/auth-ui-shared": "^0.1.8",
         "@supabase/supabase-js": "^2.42.0",
         "add-to-calendar-button-react": "^2.6.10",
+        "axios": "^1.6.8",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.0",
         "date-fns": "^3.6.0",
