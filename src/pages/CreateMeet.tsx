@@ -1,8 +1,4 @@
 // imports
-
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -15,7 +11,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronsUpDown } from "lucide-react";
 import React, { useState } from "react";
-
 import {
     AlertDialog,
     AlertDialogAction,
@@ -41,7 +36,6 @@ const CreateMeet = () => {
     const [confirmation, setConfirmation] = useState(false);
     const [recurring, setRecurring] = useState("recurring");
     const [meetID, setMeetID] = useState("");
-    const [fadeIn, setFadeIn] = useState(false);
 
     const handleSetDates = (dates: Date[] | undefined) => {
         if (!dates) {
@@ -50,19 +44,6 @@ const CreateMeet = () => {
         }
         setDates(dates);
     };
-
-    useEffect(() => {
-        // Trigger the fade-in effect on component mount
-        setFadeIn(true);
-    }, []);
-
-    // Styles for the fade-in effect
-    const fadeInStyles = {
-        opacity: fadeIn ? 1 : 0,
-        transition: 'opacity 1s ease-in-out',
-    };
-
-    const [code, setCode] = useState<string>("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -97,18 +78,10 @@ const CreateMeet = () => {
         const base64ID = btoa(compressedID);
         setMeetID(base64ID);
         setConfirmation(true);
-
     };
 
     return (
-
-        <div className="bg-[#E67555] min-h-screen flex flex-col justify-center items-center">
-            <div className='absolute left-0 top-0 m-5'>
-                        <Link to='/' className='text-2xl'>
-                            &#x2190; {/* HTML entity for a left-facing arrow */}
-                        </Link>
-                    </div>
-            <div style={fadeInStyles} className='bg-white space-y-14 p-10 shadow-lg h-screen mx-9'>
+        <div className='m-6 flex flex-col'>
             <h1 className='mb-4 px-5 text-center text-3xl font-semibold'>
                 Create a new event
             </h1>
@@ -176,61 +149,26 @@ const CreateMeet = () => {
                     type='submit'
                     className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
                 >
-                    <div className='flex justify-between gap-48'>
-                        <label>
-                            Event Name:
-                            <input
-                                type='text'
-                                className='border'
-                                value={eventName}
-                                onChange={(e) => setEventName(e.target.value)}
-                            />
-                        </label>
-                        <span>Rec/OneTIme</span>
-                    </div>
-                    <div className='mx-4 flex justify-between gap-8'>
-                        <label className='flex flex-col'>
-                            Dates:
-                            <DatePickerDemo
-                                dates={dates}
-                                setDates={handleSetDates}
-                            />
-                        </label>
-
-                        <label className='flex grow flex-col'>
-                            Description:
-                            <textarea
-                                value={description}
-                                className='border p-3 text-sm'
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button
-                        type='submit'
-                        className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
-                    >
-                        Create Event
-                    </button>
-                </form>
-                <AlertDialog open={confirmation} onOpenChange={setConfirmation}>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Meet Created!</AlertDialogTitle>
-                            <AlertDialogDescription className='w-96'>
-                                <div className='w-full break-words'>
-                                    Link is at{" "}
-                                    {`http://localhost:3000/meet/${meetID}`}
-                                </div>
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
-            </div>
+                    Create Event
+                </button>
+            </form>
+            <AlertDialog open={confirmation} onOpenChange={setConfirmation}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Meet Created!</AlertDialogTitle>
+                        <AlertDialogDescription className='w-96'>
+                            <div className='w-full break-words'>
+                                Link is at{" "}
+                                {`http://localhost:3000/meet/${meetID}`}
+                            </div>
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction>Continue</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 };
