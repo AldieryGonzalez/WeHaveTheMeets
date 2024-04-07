@@ -6,12 +6,12 @@ import { Button } from "./button";
 import { Calendar } from "./calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
-type DatePickerDemoProps = {
+type DatePickerProps = {
     dates: Date[] | null | undefined;
     setDates: (dates: Date[] | undefined) => void;
 };
 
-export function DatePickerDemo({ dates, setDates }: DatePickerDemoProps) {
+export function DatePicker({ dates, setDates }: DatePickerProps) {
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -24,7 +24,10 @@ export function DatePickerDemo({ dates, setDates }: DatePickerDemoProps) {
                 >
                     <CalendarIcon className='mr-2 h-4 w-4' />
                     {dates && dates.length > 0 ? (
-                        format(dates[0], "PPP")
+                        <span>
+                            {dates.length}{" "}
+                            {dates.length === 1 ? "date" : "dates"} selected
+                        </span>
                     ) : (
                         <span>Pick some dates</span>
                     )}

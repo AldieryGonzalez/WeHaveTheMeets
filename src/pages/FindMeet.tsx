@@ -35,6 +35,7 @@ const FindMeet = () => {
     };
 
     return (
+
         <div className="bg-[#E67555] min-h-screen flex justify-center items-center">
         {/* <div className="bg-[#E67555] min-h-screen flex justify-center items-center"> */}
             {/* Centered container with white background */}

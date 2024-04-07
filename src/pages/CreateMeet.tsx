@@ -1,6 +1,20 @@
 // imports
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { Button } from "@/components/ui/button";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuLabel,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronsUpDown } from "lucide-react";
+import React, { useState } from "react";
 
 import {
     AlertDialog,
@@ -12,7 +26,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "../components/ui/alert-dialog";
-import { DatePickerDemo } from "../components/ui/day-picker";
+import { DatePicker } from "../components/ui/day-picker";
 import { supabase } from "../utils/supabase";
 
 const CreateMeet = () => {
@@ -25,6 +39,7 @@ const CreateMeet = () => {
     const [dates, setDates] = useState<Date[]>([]); // [start, end
     const [description, setDescription] = useState("");
     const [confirmation, setConfirmation] = useState(false);
+    const [recurring, setRecurring] = useState("recurring");
     const [meetID, setMeetID] = useState("");
     const [fadeIn, setFadeIn] = useState(false);
 
@@ -86,6 +101,7 @@ const CreateMeet = () => {
     };
 
     return (
+
         <div className="bg-[#E67555] min-h-screen flex flex-col justify-center items-center">
             <div className='absolute left-0 top-0 m-5'>
                         <Link to='/' className='text-2xl'>
@@ -93,11 +109,72 @@ const CreateMeet = () => {
                         </Link>
                     </div>
             <div style={fadeInStyles} className='bg-white space-y-14 p-10 shadow-lg h-screen mx-9'>
-
-                <h1 className='px-5 text-center font-bold'>Create a new event</h1>
-                <form
-                    onSubmit={handleSubmit}
-                    className='m-4 flex flex-col items-center'
+            <h1 className='mb-4 px-5 text-center text-3xl font-semibold'>
+                Create a new event
+            </h1>
+            <form
+                onSubmit={handleSubmit}
+                className='mx-auto flex flex-col items-center'
+            >
+                <div className='container flex'>
+                    <div className='flex flex-col'>
+                        <input
+                            type='text'
+                            className='border'
+                            value={eventName}
+                            onChange={(e) => setEventName(e.target.value)}
+                            placeholder='Event Name'
+                        />
+                        <textarea
+                            value={description}
+                            className='border p-3 text-sm'
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder='Event Description'
+                        />
+                    </div>
+                    <div className='mx-4 flex flex-col  gap-8'>
+                        <DatePicker dates={dates} setDates={handleSetDates} />
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant='outline'>
+                                    {recurring === "recurring" ? (
+                                        <span className='flex items-center gap-2'>
+                                            Recurring{" "}
+                                            <ChevronsUpDown size={16} />
+                                        </span>
+                                    ) : (
+                                        <span className='flex items-center gap-2'>
+                                            One Time{" "}
+                                            <ChevronsUpDown size={16} />
+                                        </span>
+                                    )}
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className='w-56'>
+                                <DropdownMenuLabel>
+                                    Event Type
+                                </DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuRadioGroup
+                                    value={recurring}
+                                    onValueChange={(value) =>
+                                        setRecurring(value)
+                                    }
+                                >
+                                    <DropdownMenuRadioItem value='recurring'>
+                                        Recurring
+                                    </DropdownMenuRadioItem>
+                                    <DropdownMenuRadioItem value='oneTime'>
+                                        One Time
+                                    </DropdownMenuRadioItem>
+                                </DropdownMenuRadioGroup>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </div>
+                </div>
+                <button
+                    type='submit'
+                    className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
                 >
                     <div className='flex justify-between gap-48'>
                         <label>
