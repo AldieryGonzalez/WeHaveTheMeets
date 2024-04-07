@@ -106,7 +106,7 @@ const CreateMeet = () => {
                     type='submit'
                     className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
                 >
-                    Create Event
+                    Create an Event
                 </button>
             </form>
             <AlertDialog open={confirmation} onOpenChange={setConfirmation}>
