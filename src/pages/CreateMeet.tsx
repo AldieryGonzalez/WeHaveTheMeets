@@ -9,6 +9,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ChevronsUpDown } from "lucide-react";
 import React, { useState } from "react";
 import {
     AlertDialog,
@@ -20,7 +21,7 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "../components/ui/alert-dialog";
-import { DatePickerDemo } from "../components/ui/day-picker";
+import { DatePicker } from "../components/ui/day-picker";
 import { supabase } from "../utils/supabase";
 
 const CreateMeet = () => {
@@ -80,62 +81,69 @@ const CreateMeet = () => {
     };
 
     return (
-        <div className='flex flex-col'>
-            <h1 className='px-5 text-center text-3xl font-semibold'>
+        <div className='m-6 flex flex-col'>
+            <h1 className='mb-4 px-5 text-center text-3xl font-semibold'>
                 Create a new event
             </h1>
             <form
                 onSubmit={handleSubmit}
-                className='m-4 flex flex-col items-center'
+                className='mx-auto flex flex-col items-center'
             >
-                <div className='flex justify-between gap-48'>
-                    <input
-                        type='text'
-                        className='border'
-                        value={eventName}
-                        onChange={(e) => setEventName(e.target.value)}
-                        placeholder='Event Name'
-                    />
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant='outline'></Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className='w-56'>
-                            <DropdownMenuLabel>
-                                Panel Position
-                            </DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuRadioGroup
-                                value={recurring}
-                                onValueChange={(value) => setRecurring(value)}
-                            >
-                                <DropdownMenuRadioItem value='recurring'>
-                                    Recurring
-                                </DropdownMenuRadioItem>
-                                <DropdownMenuRadioItem value='oneTime'>
-                                    One Time
-                                </DropdownMenuRadioItem>
-                            </DropdownMenuRadioGroup>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                </div>
-                <div className='mx-4 flex justify-between gap-8'>
-                    <label className='flex flex-col'>
-                        Dates:
-                        <DatePickerDemo
-                            dates={dates}
-                            setDates={handleSetDates}
+                <div className='container flex'>
+                    <div className='flex flex-col'>
+                        <input
+                            type='text'
+                            className='border'
+                            value={eventName}
+                            onChange={(e) => setEventName(e.target.value)}
+                            placeholder='Event Name'
                         />
-                    </label>
-
-                    <label className='flex grow flex-col'>
-                        Description:
                         <textarea
                             value={description}
                             className='border p-3 text-sm'
                             onChange={(e) => setDescription(e.target.value)}
+                            placeholder='Event Description'
                         />
-                    </label>
+                    </div>
+                    <div className='mx-4 flex flex-col  gap-8'>
+                        <DatePicker dates={dates} setDates={handleSetDates} />
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant='outline'>
+                                    {recurring === "recurring" ? (
+                                        <span className='flex items-center gap-2'>
+                                            Recurring{" "}
+                                            <ChevronsUpDown size={16} />
+                                        </span>
+                                    ) : (
+                                        <span className='flex items-center gap-2'>
+                                            One Time{" "}
+                                            <ChevronsUpDown size={16} />
+                                        </span>
+                                    )}
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className='w-56'>
+                                <DropdownMenuLabel>
+                                    Event Type
+                                </DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuRadioGroup
+                                    value={recurring}
+                                    onValueChange={(value) =>
+                                        setRecurring(value)
+                                    }
+                                >
+                                    <DropdownMenuRadioItem value='recurring'>
+                                        Recurring
+                                    </DropdownMenuRadioItem>
+                                    <DropdownMenuRadioItem value='oneTime'>
+                                        One Time
+                                    </DropdownMenuRadioItem>
+                                </DropdownMenuRadioGroup>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </div>
                 </div>
                 <button
                     type='submit'
