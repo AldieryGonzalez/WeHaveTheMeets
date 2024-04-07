@@ -25,7 +25,7 @@ const FindMeet = () => {
             <div></div>
             <div>
                 <div className='absolute left-0 top-0 m-5'>
-                    <Link to='/landing' className='text-2xl'>
+                    <Link to='/' className='text-2xl'>
                         &#x2190; {/* HTML entity for a left-facing arrow */}
                     </Link>
                 </div>
