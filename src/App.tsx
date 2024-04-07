@@ -14,7 +14,7 @@ function App() {
             location=''
             startDate='2024-04-07'
             endDate='2024-04-07'
-            startTime='10:15'
+            startTime='10:16'
             endTime='23:30'
             timeZone='America/Los_Angeles'
         ></AddToCalendarButton>
