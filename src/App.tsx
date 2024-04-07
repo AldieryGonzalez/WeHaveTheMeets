@@ -1,24 +1,7 @@
-import { AddToCalendarButton } from "add-to-calendar-button-react";
+import Landing from "./pages/Landing";
 
 function App() {
-    return (
-        <AddToCalendarButton
-            name='Title'
-            options={[
-                "Apple",
-                "Google",
-                "Microsoft365",
-                "Outlook.com",
-                "Yahoo",
-            ]}
-            location=''
-            startDate='2024-04-07'
-            endDate='2024-04-07'
-            startTime='10:16'
-            endTime='23:30'
-            timeZone='America/Los_Angeles'
-        ></AddToCalendarButton>
-    );
+    return <Landing />;
 }
 
 export default App;
