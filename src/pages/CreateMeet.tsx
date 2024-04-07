@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { DatePickerDemo } from "@/components/ui/day-picker";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,7 +15,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronsUpDown } from "lucide-react";
-import React, { useState } from "react";
 
 import {
     AlertDialog,
@@ -175,7 +175,7 @@ const CreateMeet = () => {
                 <button
                     type='submit'
                     className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
-                >
+                ></button>
                     <div className='flex justify-between gap-48'>
                         <label>
                             Event Name:
@@ -232,6 +232,7 @@ const CreateMeet = () => {
                 </AlertDialog>
             </div>
         </div>
+
     );
 };
 
