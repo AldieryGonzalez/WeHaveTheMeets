@@ -1,4 +1,9 @@
 // imports
+
+
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -9,8 +14,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { ChevronsUpDown } from "lucide-react";
-import React, { useState } from "react";
+
 import {
     AlertDialog,
     AlertDialogAction,
@@ -147,10 +153,18 @@ const CreateMeet = () => {
                 </div>
                 <button
                     type='submit'
-                    className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
-                >
-                    Create Event
-                </button>
+
+                    className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'>Create Event</button>
+                    <div className='flex justify-between gap-48'>
+                        
+                    </div>
+                    
+                    
+                </form>
+        
+            </div>
+
+                    
             </form>
             <AlertDialog open={confirmation} onOpenChange={setConfirmation}>
                 <AlertDialogContent>
@@ -169,8 +183,11 @@ const CreateMeet = () => {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+
         </div>
+
     );
 };
 
 export default CreateMeet;
+
