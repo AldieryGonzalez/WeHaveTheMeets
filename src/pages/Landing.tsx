@@ -14,7 +14,7 @@ const Landing = () => {
                     Find a meet
                 </Link>
                 <Link to='/create' className='rounded bg-slate-300 px-2 py-1'>
-                    Create a meet
+                    Create meet
                 </Link>
             </div>
         </div>
