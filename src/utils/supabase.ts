@@ -1,4 +1,9 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+
+export const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL as string,
+    import.meta.env.VITE_SUPABASE_KEY as string,
+);
 
 export async function googleSignIn(supabase: SupabaseClient) {
     const { error } = await supabase.auth.signInWithOAuth({
