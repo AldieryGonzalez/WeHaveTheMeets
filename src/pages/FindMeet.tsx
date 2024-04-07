@@ -5,7 +5,7 @@ const FindMeet = () => {
     return (
         <div className="flex flex-col items-center text-center m-9">
             <div className="absolute top-0 left-0 m-5">
-                <Link to='/landing' className="text-2xl">
+                <Link to='/..' className="text-2xl">
                     &#x2190; {/* HTML entity for a left-facing arrow */}
                 </Link>
             </div>
