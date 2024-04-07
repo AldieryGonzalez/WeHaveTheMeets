@@ -1,5 +1,4 @@
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
-import { createClient } from "@supabase/supabase-js";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
@@ -14,11 +13,9 @@ import CreateMeet from "./pages/CreateMeet.tsx";
 import FindMeet from "./pages/FindMeet.tsx";
 import Landing from "./pages/Landing.tsx";
 import ConnectCal from "./pages/ConnectCal.tsx";
+import { supabase } from "./utils/supabase.ts";
 
-const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL as string,
-    import.meta.env.VITE_SUPABASE_KEY as string,
-);
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route element={<App />}>
