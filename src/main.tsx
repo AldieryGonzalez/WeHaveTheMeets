@@ -9,12 +9,12 @@ import {
 } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
+import ConnectCal from "./pages/ConnectCal.tsx";
 import CreateMeet from "./pages/CreateMeet.tsx";
 import FindMeet from "./pages/FindMeet.tsx";
 import Landing from "./pages/Landing.tsx";
-import ConnectCal from "./pages/ConnectCal.tsx";
+import Meet from "./pages/Meet.tsx";
 import { supabase } from "./utils/supabase.ts";
-
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,9 +23,7 @@ const router = createBrowserRouter(
             <Route path='/find' element={<FindMeet />} />
             <Route path='/create' element={<CreateMeet />} />
             <Route path='/connect-cal/:id' element={<ConnectCal />} />
-            {/* <Route path='/link/:id' element={} />
-            <Route path='/connect-cal/:id' element={} />
-            <Route path='/times/:id' element={} />  */}
+            <Route path='/meet/:id' element={<Meet />} />
         </Route>,
     ),
 );

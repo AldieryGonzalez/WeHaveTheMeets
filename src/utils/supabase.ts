@@ -1,11 +1,11 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
 export const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL as string,
     import.meta.env.VITE_SUPABASE_KEY as string,
 );
 
-export async function googleSignIn(supabase: SupabaseClient) {
+export async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
@@ -18,7 +18,7 @@ export async function googleSignIn(supabase: SupabaseClient) {
     }
 }
 
-export async function appleSignIn(supabase: SupabaseClient) {
+export async function appleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "apple",
     });
@@ -27,7 +27,7 @@ export async function appleSignIn(supabase: SupabaseClient) {
         console.log(error);
     }
 }
-export async function azureSignIn(supabase: SupabaseClient) {
+export async function azureSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "azure",
     });
@@ -37,6 +37,6 @@ export async function azureSignIn(supabase: SupabaseClient) {
     }
 }
 
-export async function signOut(supabase: SupabaseClient) {
+export async function signOut() {
     await supabase.auth.signOut();
 }
