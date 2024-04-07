@@ -1,7 +1,7 @@
-import Landing from "./pages/Landing";
+import { Outlet } from "react-router-dom";
 
 function App() {
-    return <Landing />;
+    return <Outlet />;
 }
 
 export default App;
