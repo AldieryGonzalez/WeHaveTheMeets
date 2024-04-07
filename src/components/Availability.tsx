@@ -40,16 +40,14 @@ const Availability = ({ days }: AvailabilityProps) => {
         const width = Math.abs(start[0] - end[0]);
         const height = Math.abs(start[1] - end[1]);
 
-        for (let i = topLeft[0]; i < topLeft[0] + width; i++) {
-            for (let j = topLeft[1]; j < topLeft[1] + height; j++) {
-                setSelected((selected) => {
-                    const newSelected = [...selected];
-                    newSelected[i][j] = !newSelected[i][j];
-                    console.log("Change");
-                    return newSelected;
-                });
+        const mode = !selected[topLeft[0]][topLeft[1]];
+        const temp = [...selected];
+        for (let i = topLeft[0]; i <= topLeft[0] + width; i++) {
+            for (let j = topLeft[1]; j <= topLeft[1] + height; j++) {
+                temp[i][j] = mode;
             }
         }
+        setSelected(temp);
     };
     if (selected.length < 1) return null;
 
@@ -70,7 +68,7 @@ const Availability = ({ days }: AvailabilityProps) => {
                                     <div
                                         key={row}
                                         id={`${col}-${row}`}
-                                        className='w-full grow border-t'
+                                        className='w-full grow border-t bg-green-600'
                                         style={{
                                             height: `calc((100% / 24))`,
                                         }}
@@ -83,7 +81,7 @@ const Availability = ({ days }: AvailabilityProps) => {
                                     <div
                                         key={row}
                                         id={`${col}-${row}`}
-                                        className='w-full grow border-t bg-green-500'
+                                        className='w-full grow border-t'
                                         style={{
                                             height: `calc((100% / 24))`,
                                         }}

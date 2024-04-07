@@ -9,7 +9,7 @@ export async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-            scopes: "https://www.googleapis.com/auth/calendar.events.freebusy",
+            scopes: "https://www.googleapis.com/auth/calendar.readonly",
             redirectTo: window.location.href,
         },
     });

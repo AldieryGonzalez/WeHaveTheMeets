@@ -2,8 +2,8 @@ import Availability from "@/components/Availability";
 import ConnectCal from "@/components/ConnectCal";
 import { supabase } from "@/utils/supabase";
 import { useAuth } from "@/utils/useAuth";
-import { type Session } from "@supabase/supabase-js";
-import axios from "axios";
+// import { type Session } from "@supabase/supabase-js";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -22,7 +22,6 @@ const Meet = () => {
     const [days, setDays] = useState<Day[]>([]);
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    console.log(provider);
 
     useEffect(() => {
         if (!id) {
@@ -31,19 +30,21 @@ const Meet = () => {
         }
         // const unpackedID = atob(id);
         // console.log(unpackedID);
-        const fetchCalendar = async (
-            session: Session | null,
-            startTime = new Date().toISOString(),
-        ) => {
-            const url = `https://www.googleapis.com/calendar/v3/freeBusy?timeMin=${startTime}`;
-            const response = await axios.get(url, {
-                headers: {
-                    Authorization: `Bearer ${session?.provider_token}`,
-                },
-            });
-            console.log(response.data);
-        };
+        // const fetchCalendar = async (
+        //     session: Session | null,
+        //     startTime = new Date().toISOString(),
+        // ) => {
+        //     const url = `https://www.googleapis.com/calendar/v3/freeBusy?timeMin=${startTime}`;
+        //     const response = await axios.get(url, {
+        //         headers: {
+        //             Authorization: `Bearer ${session?.provider_token}`,
+        //         },
+        //     });
+        //     console.log(response.data);
+        // };
         const getMeet = async () => {
+            // const availability = await fetchCalendar(session);
+            // console.log(availability);
             const res = await supabase
                 .from("days")
                 .select()
