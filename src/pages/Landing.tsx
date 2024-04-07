@@ -1,7 +1,4 @@
-//how do i m
 import { Link } from "react-router-dom";
-
-
 
 const Landing = () => {
     return (

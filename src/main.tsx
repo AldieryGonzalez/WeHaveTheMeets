@@ -12,7 +12,9 @@ import "./index.css";
 import CreateMeet from "./pages/CreateMeet.tsx";
 import FindMeet from "./pages/FindMeet.tsx";
 import Landing from "./pages/Landing.tsx";
+import ConnectCal from "./pages/ConnectCal.tsx";
 import { supabase } from "./utils/supabase.ts";
+
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,10 +22,10 @@ const router = createBrowserRouter(
             <Route path='/' element={<Landing />} />
             <Route path='/find' element={<FindMeet />} />
             <Route path='/create' element={<CreateMeet />} />
-            {/* <Route path='/confirm-meet' element={} />
-            <Route path='/link/:id' element={} />
+            <Route path='/connect-cal/:id' element={<ConnectCal />} />
+            {/* <Route path='/link/:id' element={} />
             <Route path='/connect-cal/:id' element={} />
-            <Route path='/times/:id' element={} /> */}
+            <Route path='/times/:id' element={} />  */}
         </Route>,
     ),
 );
