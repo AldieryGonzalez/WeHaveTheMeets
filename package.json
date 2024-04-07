@@ -11,16 +11,25 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@radix-ui/react-popover": "^1.0.7",
+        "@radix-ui/react-slot": "^1.0.2",
         "@supabase/auth-helpers-react": "^0.4.2",
         "@supabase/auth-ui-react": "^0.4.7",
         "@supabase/auth-ui-shared": "^0.1.8",
         "@supabase/supabase-js": "^2.42.0",
         "add-to-calendar-button-react": "^2.6.10",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.0",
+        "date-fns": "^3.6.0",
+        "lucide-react": "^0.365.0",
         "mapbox-gl": "^3.2.0",
         "react": "^18.2.0",
+        "react-day-picker": "^8.10.0",
         "react-dom": "^18.2.0",
         "react-leaflet": "^4.2.1",
-        "react-router-dom": "^6.22.3"
+        "react-router-dom": "^6.22.3",
+        "tailwind-merge": "^2.2.2",
+        "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {
         "@types/mapbox-gl": "^3.1.0",
