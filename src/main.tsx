@@ -14,7 +14,6 @@ import CreateMeet from "./pages/CreateMeet.tsx";
 import FindMeet from "./pages/FindMeet.tsx";
 import Landing from "./pages/Landing.tsx";
 import ConnectCal from "./pages/ConnectCal.tsx";
-import { supabase } from "./utils/supabase.ts";
 
 const supabase = createClient(
     import.meta.env.VITE_SUPABASE_URL as string,
