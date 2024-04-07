@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { DatePickerDemo } from "@/components/ui/day-picker";
+
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +14,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { ChevronsUpDown } from "lucide-react";
 
 import {
@@ -174,62 +175,14 @@ const CreateMeet = () => {
                 </div>
                 <button
                     type='submit'
-                    className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
-                ></button>
+                    className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'>Create Event</button>
                     <div className='flex justify-between gap-48'>
-                        <label>
-                            Event Name:
-                            <input
-                                type='text'
-                                className='border'
-                                value={eventName}
-                                onChange={(e) => setEventName(e.target.value)}
-                            />
-                        </label>
-                        <span>Rec/OneTIme</span>
+                        
                     </div>
-                    <div className='mx-4 flex justify-between gap-8'>
-                        <label className='flex flex-col'>
-                            Dates:
-                            <DatePickerDemo
-                                dates={dates}
-                                setDates={handleSetDates}
-                            />
-                        </label>
-
-                        <label className='flex grow flex-col'>
-                            Description:
-                            <textarea
-                                value={description}
-                                className='border p-3 text-sm'
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </label>
-                    </div>
-                    <button
-                        type='submit'
-                        className='max-w-fit rounded-md border bg-blue-400 px-3 py-1.5 font-semibold text-white'
-                    >
-                        Create Event
-                    </button>
+                    
+                    
                 </form>
-                <AlertDialog open={confirmation} onOpenChange={setConfirmation}>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Meet Created!</AlertDialogTitle>
-                            <AlertDialogDescription className='w-96'>
-                                <div className='w-full break-words'>
-                                    Link is at{" "}
-                                    {`http://localhost:3000/meet/${meetID}`}
-                                </div>
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+        
             </div>
         </div>
 
@@ -237,3 +190,4 @@ const CreateMeet = () => {
 };
 
 export default CreateMeet;
+
