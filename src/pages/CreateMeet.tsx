@@ -25,6 +25,11 @@ const CreateMeet = () => {
     const [confirmation, setConfirmation] = useState(false);
     const [meetID, setMeetID] = useState("");
 
+    const handleDateChange = (newDates: Date[] | undefined) => {
+        if (!newDates) return;
+        setDates(newDates);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         // console.log(eventName, dates, description);
@@ -82,7 +87,10 @@ const CreateMeet = () => {
                 <div className='mx-4 flex justify-between gap-8'>
                     <label className='flex flex-col'>
                         Dates:
-                        <DatePickerDemo dates={dates} setDates={setDates} />
+                        <DatePickerDemo
+                            dates={dates}
+                            setDates={handleDateChange}
+                        />
                     </label>
 
                     <label className='flex grow flex-col'>

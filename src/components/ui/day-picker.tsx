@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 
 type DatePickerDemoProps = {
     dates: Date[] | null | undefined;
-    setDates: React.Dispatch<React.SetStateAction<Date[]>>;
+    setDates: (dates: Date[] | undefined) => void;
 };
 
 export function DatePickerDemo({ dates, setDates }: DatePickerDemoProps) {
@@ -33,7 +33,7 @@ export function DatePickerDemo({ dates, setDates }: DatePickerDemoProps) {
             <PopoverContent className='w-auto p-0'>
                 <Calendar
                     mode='multiple'
-                    selected={dates || null}
+                    selected={dates || undefined}
                     onSelect={setDates}
                     initialFocus
                 />
